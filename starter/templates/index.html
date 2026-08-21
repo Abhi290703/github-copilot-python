@@ -1,18 +1,66 @@
 <!doctype html>
-<html>
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <title>Sudoku Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
+  <div class="theme-toggle">
+    <button id="toggle-theme" title="Toggle Theme">☀️</button>
   </div>
+
+  <div class="main-container">
+    <h1 class="title">Sudoku</h1>
+
+    <div class="game-wrapper">
+      <!-- Left Controls -->
+      <div class="side-panel left-panel">
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button id="new-game" class="btn">New Game</button>
+      </div>
+
+      <!-- Center Board -->
+      <div class="board-container">
+        <div id="sudoku-board" class="sudoku-board"></div>
+        <div class="timer-display">
+          <span>Time: <strong id="timer">00:00</strong></span>
+        </div>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="side-panel right-panel">
+        <button id="check-solution" class="btn btn-outline">Check</button>
+        <button id="hint-button" class="btn btn-accent">Hint</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard-section">
+      <h2>Top 10 Fastest Times:</h2>
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Level</th>
+            <th>Hints</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <script src="/static/main.js"></script>
 </body>
 </html>
