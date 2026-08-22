@@ -58,3 +58,13 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - The game should be responsive and work well on both desktop and mobile devices.
 - UI colors should be visually appealing and accessible.
 - Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
+
+## Critical Evaluation of GitHub Copilot Suggestions
+
+During the development of the backtracking solver in `sudoku_logic.py`, GitHub Copilot initially suggested removing cells randomly from a completed board without validating if the remaining puzzle had a unique solution. 
+
+### Issue Identified:
+Randomly clearing 40–50 cells produced multiple valid solution branches, violating standard Sudoku rules.
+
+### Corrective Action:
+I prompted Copilot to implement a `count_solutions(board)` helper function with an early exit counter `(count >= 2)`. I then refactored the puzzle generator to only remove a cell if the remaining board strictly yielded exactly one unique solution (`count_solutions == 1`), reverting cell removal if multiple solutions were found.
